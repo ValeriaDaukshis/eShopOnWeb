@@ -23,6 +23,10 @@ namespace BlazorAdmin
             builder.Configuration.Bind(BaseUrlConfiguration.CONFIG_NAME, baseUrlConfig);
             builder.Services.AddScoped<BaseUrlConfiguration>(sp => baseUrlConfig);
 
+            var serviceBusConfig = new ServiceBusConfig();
+            builder.Configuration.Bind(ServiceBusConfig.CONFIG_NAME, serviceBusConfig);
+            builder.Services.AddScoped<ServiceBusConfig>(sp => serviceBusConfig);
+
             builder.Services.AddScoped(sp => new HttpClient() { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
             builder.Services.AddScoped<HttpService>();
